@@ -1,17 +1,35 @@
 {
-  "name": "ui5.tutorial.walkthrough.step37",
-  "version": "1.0.0",
+  "name": "ui5.tutorial.walkthrough",
+  "version": "1.0.1",
   "author": "SAP SE",
   "description": "OpenUI5 TypeScript Walkthrough: Step 37 - Accessibility",
   "private": true,
   "scripts": {
-    "start": "ui5 serve -o test/mockServer.html"
+    "start_old": "ui5 serve -o test/mockServer.html",
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandboxMockServer.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "start-mock": "fiori run --open \"test/flpSandboxMockServer.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "suite-tests": "fiori run --open \"test/testsuite.qunit.html\""
   },
   "devDependencies": {
     "@types/qunit": "2.5.4",
-    "@ui5/cli": "^4.0.53",
     "ui5-middleware-livereload": "^3.3.1",
     "ui5-middleware-serveframework": "^3.8.1",
-    "ui5-middleware-simpleproxy": "^3.7.1"
-  }
+    "ui5-middleware-simpleproxy": "^3.7.1",
+    "@ui5/cli": "^4.0.0",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "6.0.1"
+  },
+  "sapuxLayer": "CUSTOMER_BASE",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html"
 }

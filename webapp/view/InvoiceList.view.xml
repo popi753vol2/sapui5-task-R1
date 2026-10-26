@@ -8,6 +8,17 @@
     <Toolbar>
     <Title text="{i18n>invoiceListTitle}"/>
     <ToolbarSpacer/>
+    <ComboBox
+      id="statusFilter"
+      width="12em"
+      selectedKey=""
+      placeholder="{i18n>filterStatusPlaceholder}"
+      selectionChange=".onStatusFilterChange">
+      <core:Item key="" text="{i18n>invoiceStatusAll}"/>
+      <core:Item key="A" text="{i18n>invoiceStatusA}"/>
+      <core:Item key="B" text="{i18n>invoiceStatusB}"/>
+      <core:Item key="C" text="{i18n>invoiceStatusC}"/>
+    </ComboBox>
     <SearchField
       width="50%"
       search=".onFilterInvoices"/>

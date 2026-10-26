@@ -9,17 +9,29 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
       this.getView()?.setModel(viewModel, "view");
     },
     onFilterInvoices(event) {
-      // build filter array
-      const filter = [];
-      const query = event.getParameter("query");
+      this._invoiceQuery = event.getParameter("query");
+      this.applyInvoiceFilters();
+    },
+
+    onStatusFilterChange() {
+      this.applyInvoiceFilters();
+    },
+
+    applyInvoiceFilters() {
+      const filters = [];
+      const query = this._invoiceQuery;
+      const status = this.byId("statusFilter")?.getSelectedKey();
+
       if (query) {
-        filter.push(new Filter("ProductName", FilterOperator.Contains, query));
+        filters.push(new Filter("ProductName", FilterOperator.Contains, query));
+      }
+      if (status) {
+        filters.push(new Filter("Status", FilterOperator.EQ, status));
       }
 
-      // filter binding
       const list = this.byId("invoiceList");
       const binding = list?.getBinding("items");
-      binding?.filter(filter);
+      binding?.filter(filters);
     },
     onPress(event) {
       const item = event.getSource();

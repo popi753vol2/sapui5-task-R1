@@ -20,9 +20,15 @@
         "uri": "V2/Northwind/Northwind.svc/",
         "type": "OData",
         "settings": {
-          "odataVersion": "2.0"
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
         }
       }
+    },
+    "sourceTemplate": {
+      "id": "@sap/ux-app-migrator:freestyle",
+      "version": "1.33.0",
+      "toolsId": "aadf3d66-3173-4f2a-a100-407fc81281fd"
     }
   },
   "sap.ui": {
